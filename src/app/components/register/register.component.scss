@@ -1,0 +1,92 @@
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #28313D;
+}
+
+.back-to-login-button {
+    position: absolute;
+    top: 16px;
+    left: 32px;
+    @media (max-width: 430px) {
+        color: whitesmoke;
+        top: 0;
+        left: 0;
+    }
+}
+
+mat-card {
+    padding: 32px;
+    background-color: #374657;
+    @media (max-width: 430px) {
+        padding: 0;
+        width: 90% !important;
+    }
+}
+
+
+.introduction {
+    margin-bottom: 32px;
+    color: darkgray;
+}
+
+form {
+    width: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    @media (max-width: 430px) {
+        width: unset;
+    }
+
+    h1 {
+        width: 100%;
+        text-align: left;
+        color: darkgray;
+    }
+
+    button, mat-form-field {
+        width: -webkit-fill-available;
+    }
+
+    button {
+        margin: 5px 0;
+
+        &[mat-button] {
+            width: auto;
+        }
+    }
+
+    .aligned-to-right {
+        text-align: right;
+        width: 100%;
+    }
+}
+
+
+.input-icon {
+    width: auto !important;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    margin: auto;
+}
+
+.move-right {
+    margin-right: -12px !important;
+}
+
+.name-input {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    mat-form-field {
+        width: 45%;
+    }
+}

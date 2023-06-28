@@ -1,0 +1,53 @@
+.chatroom-content-chat {
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100% - 64px);
+    overflow: auto;
+    overflow-x: hidden;
+    color: white;
+    padding:  0 0 1.5rem 0;
+}
+
+.search-input {
+    @media (max-width: 430px) {
+      display: none;
+    }
+  }
+  
+.full-message-container {
+    width: 100%;
+    display: flex;
+    padding: 0.5rem 1.5rem;
+
+    &:hover {
+        background-color: #34373c;
+        cursor: pointer;
+    }
+}
+
+.full-message-container:first-child {
+    padding: 1rem 1.5rem 0.5rem 1.5rem;
+}
+
+.message-infos-container {
+    display: flex;
+}
+
+.message-text-container {
+    padding: 5px 10px;
+
+    .message-text {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.85);
+        margin: 0;
+    }
+}
+
+.time {
+    margin: 0 0 5px 0 !important;
+    font-size: 12px !important;
+}
+
+.chat-icon {
+    height: 40px;
+}

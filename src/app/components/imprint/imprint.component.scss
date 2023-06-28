@@ -1,0 +1,69 @@
+.main {
+    background-color: #28313d;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    color: lightgray !important;
+
+    @media (max-width: 992px) {
+        font-size: 16px;
+    }
+}
+
+.imprint-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 0;
+    padding-left: 64px;
+    padding-right: 64px;
+    max-width: 1400px;
+
+    @media (max-width: 992px) {
+        padding-left: 32px;
+        padding-right: 32px;
+        padding-bottom: 16px;
+        padding-top: 32px;
+    }
+
+    .back-to-page {
+        color: darkgray;
+        position: absolute;
+        top: 2rem;
+        right: 5rem;
+        &:hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        @media (max-width: 992px) {
+            top: 24x;
+            font-size: 12px;
+            right: 32px;
+        }
+    }
+
+    h1 {
+        color: darkgray;
+        font-size: 4rem;
+
+        @media (max-width: 992px) {
+            font-size: 2rem;
+        }
+    }
+
+    p {
+        color: lightgray;
+        font-size: 18px;
+    }
+
+    strong {
+        color: darkgray;
+        font-size: 24px;
+    }
+}
+
+a {
+    text-decoration: underline;
+    color: white;
+}

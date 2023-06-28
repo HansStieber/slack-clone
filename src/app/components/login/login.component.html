@@ -1,0 +1,76 @@
+<main>
+    <mat-card>
+        <mat-card-content>
+
+            <form [formGroup]="form" class="example-form" (ngSubmit)="login()">
+                <h1>Login</h1>
+                <span class="introduction">
+                    Login to your existing account or register by clicking on the button down
+                    below!
+                </span>
+
+                <mat-form-field class="example-full-width">
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email">
+                    <mat-error *ngIf="form.get('email')!.hasError('required')">
+                        Please enter your email address!
+                    </mat-error>
+                    <mat-error *ngIf="form.get('email')!.hasError('pattern')">
+                        Please enter a valid email address!
+                    </mat-error>
+                    <mat-icon class="input-icon">email</mat-icon>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <mat-label>Password</mat-label>
+                    <input [type]="pwVisible ? 'text' : 'password'" matInput formControlName="password">
+                    <mat-error *ngIf="form.get('password')!.hasError('required')">
+                        Please enter your password!
+                    </mat-error>
+                    <button type="button" mat-icon-button class="input-icon move-right"
+                        (click)="pwVisible = !pwVisible">
+                        <mat-icon>{{pwVisible ? 'visibility' : 'visibility_off'}}</mat-icon>
+                    </button>
+                </mat-form-field>
+
+                <div class="aligned-to-right">
+                    <button type="button" mat-button color="primary" [disabled]="form.get('email')!.invalid"
+                        (click)="recoverPassword()" *ngIf="!isRecoveringPassword">
+                        Recover password
+                    </button>
+                    <button mat-button color="primary" *ngIf="isRecoveringPassword">
+                        <mat-spinner color="accent" diameter="20"></mat-spinner>
+                    </button>
+                </div>
+
+                <button type="submit" mat-raised-button color="primary" [disabled]="form.invalid" (click)="login()"
+                    *ngIf="!isLoggingIn">
+                    Login
+                </button>
+                <button mat-raised-button color="primary" *ngIf="isLoggingIn">
+                    <mat-spinner color="accent" diameter="20"></mat-spinner>
+                </button>
+
+                <button type="button" mat-raised-button color="accent" [routerLink]="['/register']">
+                    Register
+                </button>
+            </form>
+
+            <div class="continue-container">
+                <hr>
+                <p>Or continue as guest</p>
+                <hr>
+            </div>
+
+            <div class="guest-login-container">
+                <button *ngIf="!isLoggingInGuest" (click)="loginAsGuest()" class="guest-btn" mat-raised-button
+                    color="primary">
+                    Guest login
+                </button>
+                <button mat-raised-button color="primary" *ngIf="isLoggingInGuest">
+                    <mat-spinner color="accent" diameter="20"></mat-spinner>
+                </button>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</main>

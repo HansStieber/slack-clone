@@ -1,0 +1,20 @@
+<div class="dm-channels-container">
+    <div class="dm-channels-headline">
+        <p>Directmessages</p>
+    </div>
+    <div *ngFor="let dmChannel of dmChannelService.allDmChannels">
+        <div class="channels-list" *ngIf="dmChannel.dmChannelId" (click)="navigateToDmChannel(dmChannel)" [routerLink]="['dm-channel-chatroom/' + dmChannel.dmChannelId]" routerLinkActive="active-link">
+            <div class="chat-icon" [style.background-color]="getUserColor(dmChannel.otherUserId)">{{
+                getUserInitialsById(dmChannel.otherUserId) }}
+                <div class="online-dot {{ getUserOnlineStatus(dmChannel.otherUserId) }}"></div>
+            </div>
+            <p class="single-channel">{{
+                getUsernameById(dmChannel.otherUserId) }} {{ getUserStatusById(dmChannel.otherUserId) }}</p>
+        </div>
+    </div>
+
+    <div (click)="openAddDmChannelDialog()" class="dm-channel-add">
+        <mat-icon>add</mat-icon>
+        <p>New Directmessage</p>
+    </div>
+</div>

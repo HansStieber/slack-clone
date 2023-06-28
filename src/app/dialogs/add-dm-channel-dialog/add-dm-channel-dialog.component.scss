@@ -1,0 +1,54 @@
+.dm-channel-dialog-container {
+    background-color: #1A1D21;
+    color: lightgray;
+    padding: 2rem;
+
+    .mat-mdc-form-field {
+        min-width: 100% !important;
+    }
+
+    .close-icon {
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+        cursor: pointer;
+    }
+
+    .dialog-headline {
+        h1 {
+            margin-bottom: 2rem;
+            font-weight: 700;
+            color: darkgray;
+        }
+    }
+
+    .dialog-description {
+        p {
+            margin: 0;
+            color: lightgray;
+            font-size: 12px;
+            margin-bottom: 2rem;
+        }
+    }
+
+    .select-user {
+        margin-top: 2rem;
+        width: 100%;
+    }
+
+    .button-container {
+        margin-top: 2rem;
+        display: flex;
+        justify-content: flex-end;
+
+        .create-button {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .enabled-button {
+            background-color: #33ee36;
+            color: black;
+        }
+    }
+}

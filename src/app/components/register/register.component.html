@@ -1,0 +1,82 @@
+<main>
+    <mat-card>
+        <mat-card-content>
+            <button mat-icon-button class="back-to-login-button" [routerLink]="['/login']">
+                <mat-icon>arrow_back</mat-icon>
+            </button>
+
+            <form [formGroup]="registerForm" class="example-form" (ngSubmit)="register()">
+                <h1>Register</h1>
+                <span class="introduction">
+                    Join the conversation by completing the registration form!
+                </span>
+
+                <div class="name-input">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>First name</mat-label>
+                        <input type="name" matInput formControlName="firstname">
+                        <mat-error *ngIf="registerForm.get('firstname')!.hasError('required')">
+                            Enter your first name!
+                        </mat-error>
+                        <mat-error *ngIf="registerForm.get('firstname')!.hasError('minlength')">
+                            Enter at least two characters!
+                        </mat-error>
+                        <mat-error *ngIf="registerForm.get('firstname')!.hasError('maxlength')">
+                            Max of 12 characters reached!
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Last name</mat-label>
+                        <input type="name" matInput formControlName="lastname">
+                        <mat-error *ngIf="registerForm.get('lastname')!.hasError('required')">
+                            Enter your last name!
+                        </mat-error>
+                        <mat-error *ngIf="registerForm.get('lastname')!.hasError('minlength')">
+                            Enter at least two characters!
+                        </mat-error>
+                        <mat-error *ngIf="registerForm.get('lastname')!.hasError('maxlength')">
+                            Max of 12 characters reached!
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <mat-form-field class="example-full-width">
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email">
+                    <mat-error *ngIf="registerForm.get('email')!.hasError('required')">
+                        Please enter your email address!
+                    </mat-error>
+                    <mat-error *ngIf="registerForm.get('email')!.hasError('pattern')">
+                        Please enter a valid email address!
+                    </mat-error>
+                    <mat-icon class="input-icon">email</mat-icon>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <mat-label>Password</mat-label>
+                    <input [type]="pwVisible ? 'text' : 'password'" matInput formControlName="password">
+                    <mat-error *ngIf="registerForm.get('password')!.hasError('required')">
+                        Password is required
+                    </mat-error>
+                    <mat-error *ngIf="registerForm.get('password')!.hasError('pattern')">
+                        Password must contain at least 8 characters, one number, one uppercase letter and one lowercase
+                        letter!
+                    </mat-error>
+                    <button type="button" mat-icon-button class="input-icon move-right"
+                        (click)="pwVisible = !pwVisible">
+                        <mat-icon>{{pwVisible ? 'visibility' : 'visibility_off'}}</mat-icon>
+                    </button>
+                </mat-form-field>
+
+                <button type="submit" mat-raised-button color="primary" [disabled]="registerForm.invalid"
+                    *ngIf="!isRegistering">
+                    Register
+                </button>
+                <button mat-raised-button color="primary" *ngIf="isRegistering">
+                    <mat-spinner color="accent" diameter="20"></mat-spinner>
+                </button>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</main>

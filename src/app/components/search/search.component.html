@@ -1,0 +1,16 @@
+<div class="chatroom-content-chat" #chatroomContent>
+    <div class="full-message-container" (click)="openChannel(message)" *ngFor="let message of search ? (messagesService.messages | filter:search) : []">
+        <div class="message-infos-container">
+            <div>
+                <div class="chat-icon" [style.background-color]="messagesService.getUserColor(message.authorId)">{{
+                    messagesService.getUserInitialsById(message.authorId) }}
+                    <div class="online-dot {{ messagesService.getUserOnlineStatus(message.authorId) }}"></div>
+                </div>
+            </div>
+            <div class="message-text-container">
+                <p class="time">{{ messagesService.formatTime(message.time) }} Uhr</p>
+                <p class="message-text" [innerHTML]="messagesService.formatMessageText(message.messageText)"></p>
+              </div>
+        </div>
+    </div>
+</div> 

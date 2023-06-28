@@ -1,0 +1,162 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$chatterix-slackclone-primary: mat.define-palette(mat.$indigo-palette);
+$chatterix-slackclone-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$chatterix-slackclone-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$chatterix-slackclone-theme: mat.define-light-theme((color: (primary: $chatterix-slackclone-primary,
+        accent: $chatterix-slackclone-accent,
+        warn: $chatterix-slackclone-warn,
+      )));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($chatterix-slackclone-theme);
+
+/* You can add global styles to this file, and also import other style files */
+
+
+html,
+body {
+  height: 100%;
+  background-color: #FAFAFA;
+  font-family: 'Roboto', sans-serif;
+  overscroll-behavior-y: none !important;
+}
+
+h1 {
+  color: #3F51B5;
+}
+
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  overscroll-behavior-y: none !important;
+}
+
+mat-error {
+  font-size: 12px;
+}
+
+.mdc-button {
+  color: white !important;
+}
+
+.green {
+  background-color: green;
+}
+
+.red {
+  background-color: red;
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+.grey {
+  background-color: grey;
+}
+
+/* Globale Scrollbar-Styling-Regeln */
+::-webkit-scrollbar {
+  width: 6px;
+  /* Breite der Scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  width: 8px;
+  background-color: #1e2a39;
+  /* Hintergrundfarbe des Scrollbalkens */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #333f4f;
+  /* Farbe des Scrollbalken-Daumens */
+  border-radius: 4px;
+  /* Abrundung des Scrollbalken-Daumens */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #333f4f;
+  /* Farbe des Scrollbalken-Daumens bei Hover */
+}
+
+.active-link {
+  background-color: #6698C8;
+  padding-left: 8px;
+}
+
+.chat-icon {
+  position: relative;
+  width: 40px;
+  height: 35px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 16px;
+}
+
+input {
+  caret-color: white !important;
+}
+
+.mat-icon {
+  color: whitesmoke !important;
+  overflow: unset !important;
+}
+
+.online-dot {
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1px solid white;
+}
+
+mat-drawer-content {
+  overflow: hidden !important;
+}
+
+.mat-mdc-text-field-wrapper {
+  background-color: #3B4246 !important;
+  color: white !important;
+  border-radius: 8px !important;
+}
+
+mat-form-field {
+    padding-bottom: 10px;
+    color: white !important;
+    mat-label {
+        color: white !important;
+    }
+    span {
+        color: white !important;
+    }
+}
+
+
+.mdc-text-field__input {
+  color: white !important;
+}

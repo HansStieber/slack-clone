@@ -1,0 +1,25 @@
+<div class="channel-dialog-container">
+
+    <mat-icon class="close-icon" (click)="closeDialog()">close</mat-icon>
+
+    <div class="dialog-headline">
+        <h1>Add Channels</h1>
+    </div>
+
+    <div class="dialog-description">
+        <p>Channels are used by your team to communicate. Ideally, they should be topic-related - #marketing for example.</p>
+    </div>
+
+    <form #channelForm="ngForm" [formGroup]="input"  (ngSubmit)="createChannel()">
+        <div class="dialog-input">
+            <label>Name</label>
+            <input name="channelName" type="text" formControlName="newChannelName">
+        </div>
+    
+        <div class="button-container">
+            <button class="create-button" type="submit" mat-raised-button [disabled]="input.invalid">Create</button>
+
+        </div>
+     
+    </form>
+</div>

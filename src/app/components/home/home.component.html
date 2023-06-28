@@ -1,0 +1,77 @@
+<mat-drawer-container class="drawer-container" autosize>
+  <mat-drawer #drawer class="drawer-sidenav" [opened]="true" mode="side">
+    <div class="sidenav-header">
+      <p>What's up, {{ getUserFirstname() }}?</p>
+      <div class="mobile-button">
+      <button type="button" (click)="toggleDrawer()" mat-icon-button class="example-icon"
+      aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+      </div>
+    </div>
+
+    <div class="sidenav-content">
+      <app-channels></app-channels>
+      <div class="divider"></div>
+      <app-dm-channels></app-dm-channels>
+    </div>
+  </mat-drawer>
+
+  <mat-toolbar class="headbar" color="primary">
+    <button type="button" (click)="drawer.toggle()" mat-icon-button class="example-icon"
+      aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span class="example-spacer" [@slideInOut]="menusState">Chatterix</span>
+
+    <div class="search-input">
+    <mat-icon (click)="toggleSearchField()">search</mat-icon> 
+    <mat-form-field #searchFormField [@slideInOut]="searchFieldState" class="search-field">
+      <mat-label>Search all messages</mat-label>
+      <input #searchAllMessages matInput [(ngModel)]="value" (focus)="onKeyUpEvent()" (click)="messagesService.loadAllMessages()" type="text" (keyup)="onKeyUpEvent()">
+      <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+
+    <button class="mat-button" [matMenuTriggerFor]="menu" #homeOfficeButton [@slideInOut]="menusState">{{ authenticationService.user.userStatus ?
+      authenticationService.user.userStatus : 'Select a status'}}</button>
+
+    <mat-menu #menu="matMenu" [@slideInOut]="menusState">
+      <div class="status-container">
+        <p>Select a status:</p>
+      </div>
+      <button class="changeStatus" mat-menu-item (click)="onMenuItemClick('In a meeting 🗓️', homeOfficeButton)">🗓️ In
+        a meeting</button>
+      <button class="changeStatus" mat-menu-item (click)="onMenuItemClick('Sick 🤒', homeOfficeButton)">🤒 Sick</button>
+      <button class="changeStatus" mat-menu-item (click)="onMenuItemClick('On the go 🚗', homeOfficeButton)">🚗 On the
+        go</button>
+      <button class="changeStatus" mat-menu-item (click)="onMenuItemClick('On vacation 🌴', homeOfficeButton)">🌴 On
+        vacation</button>
+      <button class="changeStatus" mat-menu-item
+        (click)="onMenuItemClick('Home Office 🧑🏽‍💻', homeOfficeButton)">🧑🏽‍💻 Home Office</button>
+    </mat-menu>
+
+    <button class="profile-container" mat-button [matMenuTriggerFor]="profile">{{ getUserInitials() }}
+      <div class="online-dot {{ getUserOnlineStatus() }}"></div>
+    </button>
+    <mat-menu #profile="matMenu">
+      <button class="changeStatus" mat-menu-item [matMenuTriggerFor]="profiles">Activity status</button>
+      <button class="changeStatus" mat-menu-item (click)="logout()">Logout</button>
+    </mat-menu>
+    <mat-menu #profiles="matMenu">
+      <button class="changeStatus" (click)="authenticationService.setUserOnlineStatus('green')"
+        mat-menu-item>Online</button>
+      <button class="changeStatus" (click)="authenticationService.setUserOnlineStatus('yellow')"
+        mat-menu-item>Away</button>
+      <button class="changeStatus" (click)="authenticationService.setUserOnlineStatus('grey')" mat-menu-item>Do not
+        disturbed</button>
+      <button class="changeStatus" (click)="authenticationService.setUserOnlineStatus('red')"
+        mat-menu-item>Offline</button>
+    </mat-menu>
+
+  </mat-toolbar>
+
+  <router-outlet></router-outlet>
+</mat-drawer-container>

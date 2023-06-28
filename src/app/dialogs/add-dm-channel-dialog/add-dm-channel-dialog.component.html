@@ -1,0 +1,36 @@
+<div class="dm-channel-dialog-container">
+
+    <mat-icon class="close-icon" (click)="closeDialog()">close</mat-icon>
+
+    <div class="dialog-headline">
+        <h1>Start a new private conversation</h1>
+    </div>
+
+    <div class="dialog-description">
+        <p>Select a user for your conversation.</p>
+    </div>
+
+    <form [formGroup]="selectUser" (ngSubmit)="createDmChannel()">
+        <div class="dialog-input">
+            <mat-form-field appearance="fill">
+                <mat-label>Select User</mat-label>
+                <mat-select formControlName="selectedUser">
+                    <ng-container *ngFor="let user of this.authenticationService.users">
+                        <ng-container *ngIf="user.userId !== this.authenticationService.currentSignedInUserId">
+                            <ng-container *ngIf="!doesDmChannelExist(user)">
+                                <mat-option [value]="user">
+                                    {{ user.firstname }} {{ user.lastname }}
+                                </mat-option>
+                            </ng-container>
+                        </ng-container>
+                    </ng-container>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="button-container">
+            <button type="submit" mat-raised-button class="create-button" [disabled]="selectUser.invalid">Start
+                conversation <span>with {{ selectedUserName }} </span></button>
+        </div>
+    </form>
+</div>

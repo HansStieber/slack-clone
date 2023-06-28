@@ -1,0 +1,71 @@
+.channel-dialog-container {
+    background-color: #222529;
+    color: darkgray;
+    max-width: 600px;
+    padding: 2rem;
+
+    .close-icon {
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+        cursor: pointer;
+    }
+
+    .dialog-headline {
+        h1 {
+            color: lightgray;
+            margin-bottom: 2.5rem;
+            font-weight: 700;
+        }
+    }
+
+    .dialog-description {
+        p {
+            margin: 0;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 12px;
+        }
+    }
+
+    .dialog-input {
+        margin-top: 2rem;
+        color: lightgray;
+
+        label {
+            font-size: 16px;
+        }
+
+        input {
+            background-color: #1A1D21;
+            width: 90%;
+            height: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            border-radius: 5px;
+            margin-top: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+            padding: 0rem 1rem;
+
+            &:focus {
+                border-color: #33ee36;
+                outline: none; // entfernt die standardmäßige Kontur
+                box-shadow: 0 0 0 1px #33ee36, 0 0 10px rgba(40, 159, 29, 0.5)
+            }
+        }
+    }
+
+    .button-container {
+        margin-top: 2rem;
+        display: flex;
+        justify-content: flex-end;
+
+        .create-button {
+            background-color: #4b4a4f;
+            color: darkgray;
+        }
+
+        .enabled-button {
+            background-color: #33ee36;
+            color: black;
+        }
+    }
+}

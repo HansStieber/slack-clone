@@ -1,0 +1,40 @@
+.channels-container {
+    margin-bottom: 64px;
+    .channels-headline {
+        p {
+            color: white;
+            font-size: 20px;
+        }
+    }
+    .channels-list {
+        display: flex;
+        align-items: center;
+        color: white;
+        margin-bottom: 0.5rem;
+        border-radius: 8px;
+        &:hover {
+            background-color: #6698C8;
+        }
+        .single-channel {
+            margin: 0 0 0 12px;
+            cursor: pointer;
+            width: 100%;
+        }
+    }
+    .add-channel {
+        display: flex;
+        align-items: center;
+        margin-top: 2rem;
+        cursor: pointer;
+        color: white;
+        padding: 3px 10px 3px 5px;
+        &:hover {
+            background-color: #24313f;
+            border-radius: 10px;
+        }
+        p {
+            margin: 0 0 0 4px;
+            color: white;
+        }
+    }
+}

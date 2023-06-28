@@ -1,0 +1,14 @@
+<div class="channels-container">
+    <div class="channels-headline">
+        <p>Channels</p>
+    </div>
+    <div class="channels-list" *ngFor="let channel of channelService.allChannels"
+        [routerLink]="['channel-chatroom/' + channel.channelId]" routerLinkActive="active-link" (click)="navigateToChannel(channel)">
+        <mat-icon>tag</mat-icon>
+        <p class="single-channel">{{channel.channelName}}</p>
+    </div>
+    <div (click)="createNewChannel()" class="add-channel">
+        <mat-icon>add</mat-icon>
+        <p>Add Channels</p>
+    </div>
+</div>

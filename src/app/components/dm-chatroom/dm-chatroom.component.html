@@ -1,0 +1,61 @@
+<div class="chatroom-container">
+
+    <div class="chatroom-header">
+        <div class="channel-name-container">
+            <mat-icon>tag</mat-icon>
+            <p>Private message to {{ channelService.name }}</p>
+        </div>
+        <div class="channel-settings-container">
+            <mat-icon [matMenuTriggerFor]="menu">settings</mat-icon>
+            <mat-menu #menu="matMenu">
+                <button (click)="openDeleteDmChannelDialog()" mat-menu-item>Delete chat with {{ channelService.name
+                    }}</button>
+            </mat-menu>
+        </div>
+    </div>
+</div>
+
+<div class="chatroom-content">
+    <div class="chatroom-content-header" *ngIf="!messages || messages.length === 0">
+        <p>{{ messagesService.getUserFirstname() }}, this is a private conversation with <span>{{ channelService.name
+                }}</span></p>
+        <p>Your message can only be read by {{ channelService.name }}</p>
+        <p>Be the first to say 'Hello'!"</p>
+    </div>
+
+    <div class="chatroom-content-chat" #chatroomContent>
+        <div class="full-message-container" *ngFor="let message of messages">
+            <div class="message-infos-container">
+                <div>
+                    <div class="chat-icon" [style.background-color]="messagesService.getUserColor(message.authorId)">{{
+                        messagesService.getUserInitialsById(message.authorId) }}
+                        <div class="online-dot {{ messagesService.getUserOnlineStatus(message.authorId) }}"></div>
+                    </div>
+                </div>
+                <div class="message-text-container">
+                    <p class="time">{{ messagesService.formatTime(message.time) }} Uhr</p>
+                    <p class="message-text" [innerHTML]="messagesService.formatMessageText(message.messageText)"></p>
+                  </div>
+            </div>
+            <div [matMenuTriggerFor]="menu" class="message-setting-container"
+                *ngIf="authenticationService.currentSignedInUserId === message.authorId">
+                <mat-icon>more_vert</mat-icon>
+                <mat-menu #menu="matMenu">
+                    <button (click)="openDeleteDmMessageDialog(message)" mat-menu-item>Delete this message</button>
+                </mat-menu>
+            </div>
+        </div>
+    </div>
+
+    <div class="chatroom-content-textarea">
+        <form [formGroup]="input" (submit)="sendMessage()">
+            <div class="chatroom-content-textarea-input"></div>
+            <input name="messageText" type="text" placeholder="Nachricht an #{{ channelService.name }}"
+                formControlName="newMessage">
+
+            <button type="submit" class="button" [disabled]="input.invalid">
+                <img class="send-icon" src="../../../assets/img/send-icon.png" alt="">
+            </button>
+        </form>
+    </div> 
+</div>

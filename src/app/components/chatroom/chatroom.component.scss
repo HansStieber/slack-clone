@@ -1,0 +1,143 @@
+.chatroom-container {
+    background-color: #1a1d21;
+    color: white;
+    .chatroom-header {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+        padding: 0px 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 50px;
+        .channel-name-container {
+            display: flex;
+            align-items: center;
+            .mat-icon {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-right: 0.5rem;
+            }
+            .material-icons {
+                font-size: 20px;
+            }
+            p {
+                margin: 0;
+            }
+        }
+        .channel-settings-container {
+            .material-icons {
+                font-size: 20px;
+            }
+            .mat-icon {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .chatroom-content {
+        padding: 0 0 1.5rem 0;
+        height: calc(100svh - 165px);
+        background-color: #222529;
+        .chatroom-content-chat {
+            display: flex;
+            flex-direction: column;
+            max-height: calc(100% - 80px);
+            overflow: auto;
+            overflow-x: hidden;
+            .full-message-container {
+                width: 100%;
+                display: flex;
+                padding: 0.5rem 1.5rem;
+                &:hover {
+                    background-color: #34373c;
+                    .message-setting-container {
+                        display: unset;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        margin-left: auto;
+                        cursor: pointer;
+                    }
+                }
+                .message-infos-container {
+                    display: flex;
+                    .author-container {
+                        display: flex;
+                        .author {
+                            margin-right: 1rem;
+                            font-weight: 700;
+                            margin-bottom: 0;
+                            font-size: 13px;
+                        } 
+                    }
+                }
+                .message-text-container {
+                    padding: 5px 10px 0 10px;
+                    .message-text {
+                        font-size: 13px;
+                        color: rgba(255, 255, 255, 0.85);
+                        margin: 0;
+                    }
+                }
+                .message-setting-container {
+                    display: none;
+                    margin-right: 20px;
+                }
+            }
+            .full-message-container:first-child {
+                padding: 1rem 1.5rem 0.5rem 1.5rem;
+            }
+        }
+        .chatroom-content-header {
+            padding-left: 1.5rem !important;
+            padding: 0.5rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+        }
+        .chatroom-content-textarea {
+            position: absolute;
+            bottom: 2rem;
+            left: 2rem;
+            right: 2rem;
+            background-color: #222529;
+            border: 1px solid whitesmoke;
+            border-radius: 12px;
+            padding: 1rem;
+            input {
+                width: 100%;
+                height: 50px;
+                background-color: #222529;
+                border: none;
+                outline: none;
+                caret-color: #fff;
+                font-size: 13px;
+                color: #fff;
+                margin: 0;
+            }
+            .button {
+                background-color: #222529;
+                height: 25px;
+                position: absolute;
+                bottom: 10px;
+                right: 10px;
+                border: unset;
+                img {
+                    width: 25px;
+                    object-fit: cover;
+                    filter: invert(100%) sepia(1%) saturate(4271%) hue-rotate(175deg) brightness(99%) contrast(88%);
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
+.time {
+    margin: 0 0 5px 0 !important;
+    font-size: 12px !important;
+}
+.chat-icon {
+    height: 40px;
+}

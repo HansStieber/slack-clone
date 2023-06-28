@@ -1,0 +1,113 @@
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #28313D;
+}
+
+.introduction {
+    margin-bottom: 32px;
+    color: lightgray;
+}
+
+mat-card {
+    padding: 0 32px 32px 32px;
+    background-color: #374657;
+
+    @media (max-width: 430px) {
+        padding: 0;
+        width: 80%;
+    }
+}
+
+mat-form-field {
+    padding-bottom: 10px;
+    color: white !important;
+    mat-label {
+        color: white !important;
+    }
+    span {
+        color: white !important;
+    }
+}
+
+form {
+    width: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+    @media (max-width: 430px) {
+        width: unset;
+    }
+
+    h1 {
+        width: 100%;
+        text-align: left;
+        color: darkgray;
+    }
+
+    button, mat-form-field {
+        width: -webkit-fill-available;
+    }
+
+    button {
+        margin: 5px 0;
+
+        &[mat-button] {
+            width: auto;
+        }
+    }
+
+    .aligned-to-right {
+        text-align: right;
+        width: 100%;
+        button {
+            color: darkgray;
+        }
+    }
+}
+
+.input-icon {
+    width: auto !important;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    margin: auto;
+}
+
+.move-right {
+    margin-right: -12px !important;
+}
+
+.continue-container {
+    display: flex;
+    align-items: center;
+    height: 56px;
+    margin: 32px 0;
+    color: #5e5e5e;
+
+    p {
+        color: darkgray;
+    }
+
+    hr {
+        width: 80px;
+        height: 1px;
+        background-color: #5e5e5e;
+        
+    }
+}
+
+.guest-login-container {
+    display: flex;
+    justify-content: center;
+
+    button {
+        width: 150px;
+    }
+}
